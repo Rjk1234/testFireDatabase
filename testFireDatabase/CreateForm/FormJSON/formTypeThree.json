@@ -1,0 +1,77 @@
+{"data":{"FormId": "12340",
+    "Title": "Textfield,radio,checkbox Form",
+    "Status": false,
+    "property":[
+        {
+            "QuestionId":"0",
+            "qTitle": "xyz?",
+            "qType": "textfield",
+            "answer": "",
+            "option": null
+        },
+        {
+            "QuestionId":"1",
+            "qTitle": "xyz?",
+            "qType": "radio",
+            "answer": "",
+            "option": [{
+                "opid": "0",
+                "optitle": "xxxx",
+                "opdisplay": "radio",
+                "isSelected": false
+            },
+                {
+                    "opid": "1",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "3",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "4",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "QuestionId":"1",
+            "qTitle": "xyz?",
+            "qType": "checkbox",
+            "answer": "",
+            "option": [{
+                "opid": "0",
+                "optitle": "xxxx",
+                "opdisplay": "checkbox",
+                "isSelected": false
+            },
+                {
+                    "opid": "1",
+                    "optitle": "xxxx",
+                    "opdisplay": "checkbox",
+                    "isSelected": false
+                },
+                {
+                    "opid": "2",
+                    "optitle": "xxxx",
+                    "opdisplay": "checkbox",
+                    "isSelected": false
+                },
+                {
+                    "opid": "3",
+                    "optitle": "xxxx",
+                    "opdisplay": "checkbox",
+                    "isSelected": false
+                }
+            ]
+        }
+    ]
+}
+}
+

@@ -1,0 +1,131 @@
+{"data":{"FormId": "12340",
+    "Title": "Radio button form",
+    "Status": false,
+    "property":[
+        {
+            "QuestionId":"0",
+            "qTitle": "xyz?",
+            "qType": "radio",
+            "answer": "",
+            "option": [{
+                "opid": "0",
+                "optitle": "xxxx",
+                "opdisplay": "radio",
+                "isSelected": false
+            },
+                {
+                    "opid": "1",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "3",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "4",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "QuestionId":"1",
+            "qTitle": "xyz?",
+            "qType": "radio",
+            "answer": "",
+            "option": [{
+                "opid": "0",
+                "optitle": "xxxx",
+                "opdisplay": "radio",
+                "isSelected": false
+            },
+                {
+                    "opid": "1",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "3",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "4",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "QuestionId":"2",
+            "qTitle": "xyz?",
+            "qType": "radio",
+            "answer": "",
+            "option": [{
+                "opid": "0",
+                "optitle": "xxxx",
+                "opdisplay": "radio",
+                "isSelected": false
+            },
+                {
+                    "opid": "1",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "3",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "4",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "QuestionId":"3",
+            "qTitle": "xyz?",
+            "qType": "radio",
+            "option": [{
+                "opid": "0",
+                "optitle": "xxxx",
+                "opdisplay": "radio",
+                "isSelected": false
+            },
+                {
+                    "opid": "1",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "3",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                },
+                {
+                    "opid": "4",
+                    "optitle": "xxxx",
+                    "opdisplay": "radio",
+                    "isSelected": false
+                }
+            ]
+        }
+    ]
+}
+}
+
