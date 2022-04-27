@@ -1,34 +1,34 @@
-{"data":{"FormId": "12340",
-    "Title": "Form where people can give their feedback by pressing a button.",
+{"data":{"FormId": "12342",
+    "Title": "Form where people can choose multiple options.",
     "Status": false,
     "property":[
         {
             "QuestionId":"0",
             "qTitle": "Which among the following is not an Swift feature?",
-            "qType": "radio",
+            "qType": "checkbox",
             "answer": "",
             "option": [{
                 "opid": "0",
                 "optitle": "Tuples",
-                "opdisplay": "radio",
+                "opdisplay": "checkbox",
                 "isSelected": false
             },
                 {
                     "opid": "1",
                     "optitle": "Built in error handling",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 },
                 {
                     "opid": "3",
                     "optitle": "Generics",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 },
                 {
                     "opid": "4",
                     "optitle": "None of the above",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 }
             ]
@@ -36,30 +36,30 @@
         {
             "QuestionId":"1",
             "qTitle": "What is the file extension for Swift programs?",
-            "qType": "radio",
+            "qType": "checkbox",
             "answer": "",
             "option": [{
                 "opid": "0",
                 "optitle": ".sp",
-                "opdisplay": "radio",
+                "opdisplay": "checkbox",
                 "isSelected": false
             },
                 {
                     "opid": "1",
                     "optitle": ".s",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 },
                 {
                     "opid": "3",
                     "optitle": ".sw",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 },
                 {
                     "opid": "4",
                     "optitle": ".swift",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 }
             ]
@@ -67,30 +67,30 @@
         {
             "QuestionId":"2",
             "qTitle": "How to compile and run a script in one step?",
-            "qType": "radio",
+            "qType": "checkbox",
             "answer": "",
             "option": [{
                 "opid": "0",
                 "optitle": "$ swift filename.swift",
-                "opdisplay": "radio",
+                "opdisplay": "checkbox",
                 "isSelected": false
             },
                 {
                     "opid": "1",
                     "optitle": "$ swiftc filename",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 },
                 {
                     "opid": "3",
                     "optitle": "$ swiftc filename.swift",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 },
                 {
                     "opid": "4",
                     "optitle": "$ swift filename.s",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 }
             ]
@@ -98,30 +98,30 @@
         {
             "QuestionId":"3",
             "qTitle": "How to compile a script?",
-            "qType": "radio",
+            "qType": "checkbox",
             "answer": "",
             "option": [{
                 "opid": "0",
                 "optitle": "$ swift filename.swift",
-                "opdisplay": "radio",
+                "opdisplay": "checkbox",
                 "isSelected": false
             },
                 {
                     "opid": "1",
                     "optitle": "$ swiftc filename",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 },
                 {
                     "opid": "3",
                     "optitle": "$ swiftc filename.swift",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 },
                 {
                     "opid": "4",
                     "optitle": "$ swift filename.s",
-                    "opdisplay": "radio",
+                    "opdisplay": "checkbox",
                     "isSelected": false
                 }
             ]
@@ -129,4 +129,6 @@
     ]
 }
 }
+
+
 

@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: - FormModel
 class FormModel: Codable {
-    let data: FormData?
+    var data: FormData?
 
     init(data: FormData?) {
         self.data = data
@@ -20,9 +20,9 @@ class FormModel: Codable {
 
 // MARK: - FormData
 class FormData: Codable {
-    let formID, title: String?
-    let status: Bool?
-    let property: [Property]?
+    var formID, title: String?
+    var status: Bool?
+    var property: [Property]?
 
     enum CodingKeys: String, CodingKey {
         case formID = "FormId"
@@ -41,8 +41,8 @@ class FormData: Codable {
 
 // MARK: - Property
 class Property: Codable {
-    let questionID, qTitle, qType, answer: String?
-    let option: [Option]?
+    var questionID, qTitle, qType, answer: String?
+    var option: [Option]?
 
     enum CodingKeys: String, CodingKey {
         case questionID = "QuestionId"
@@ -60,8 +60,8 @@ class Property: Codable {
 
 // MARK: - Option
 class Option: Codable {
-    let opid, optitle, opdisplay: String?
-    let isSelected: Bool?
+    var opid, optitle, opdisplay: String?
+    var isSelected: Bool?
 
     init(opid: String?, optitle: String?, opdisplay: String?, isSelected: Bool?) {
         self.opid = opid

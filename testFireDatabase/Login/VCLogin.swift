@@ -18,24 +18,23 @@ class VCLogin: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        AuthManager.logOutUser()
-        //        if AuthManager.isUserLoggedIn() {
-        //            print("No More sign ins please !!!!")
-        //        }
+        btnLogin.layer.cornerRadius = 5
     }
     
     //MARK: IBAction
     @IBAction func onTapLogin(_ sender: Any) {
         if self.tfEmail.text == "" || self.tfPassword.text == "" {
-            //show alert here
+            self.alertwith(title: "Survey Plus", message: "Please enter all information", options: ["Ok"], completion: {result in })
             return
         }
         if !self.tfEmail.text!.isValidEmail() {
-            //show alert
+            self.alertwith(title: "Survey Plus", message: "Please enter valid email", options: ["Ok"], completion: {result in })
             return
         }
-        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "VCFormList") as! VCFormList
+        Functions.showActivityIndicator(In: self)
         Auth.auth().signIn(withEmail: self.tfEmail.text!, password: self.tfPassword.text!) { (authResult, error) in
+            Functions.hideActivityIndicator()
             if let error = error as? NSError {
                 switch AuthErrorCode(rawValue: error.code) {
                 case .operationNotAllowed:
@@ -53,11 +52,15 @@ class VCLogin: UIViewController {
                 default:
                     print("Error: \(error.localizedDescription)")
                 }
+                self.alertwith(title: "Survey Plus", message: "\(error.localizedDescription)", options: ["Ok"], completion: {result in })
             } else {
                 print("User signs in successfully")
                 let userInfo = Auth.auth().currentUser
                 let email = userInfo?.email
-            }
+                let UID = userInfo?.uid ?? ""
+                self.navigationController?.pushViewController(vc, animated: true)
+                Functions.saveUserInfo(user:UserInfo(userId: "\(UID)", userName: "", userEmail: "\(userInfo?.email ?? "")"))
+              }
             
         }
     }

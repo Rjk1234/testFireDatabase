@@ -20,11 +20,15 @@ class VCSignUp: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        btnSignUp.layer.cornerRadius = 5
     }
     
     //MARK: IBAction
     @IBAction func onTapSignUp(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "VCFormList") as! VCFormList
+
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        return
         if self.tfEmail.text == "" || self.tfPassword.text == "" || self.tfUserName.text == "" {
             //show alert here
             return
@@ -33,9 +37,9 @@ class VCSignUp: UIViewController {
             //show alert
             return
         }
-        
-        
+        Functions.showActivityIndicator(In: self)
         Auth.auth().createUser(withEmail: self.tfEmail.text!, password: self.tfPassword.text!) { authResult, error in
+            Functions.hideActivityIndicator()
             if let error = error as? NSError {
                 switch AuthErrorCode(rawValue: error.code) {
                 case .operationNotAllowed:
@@ -53,10 +57,15 @@ class VCSignUp: UIViewController {
                 default:
                     print("Error: \(error.localizedDescription)")
                 }
+                self.alertwith(title: "Survey Plus", message: "\(error.localizedDescription)", options: ["Ok"], completion: {result in })
             } else {
                 print("User signs up successfully")
                 let newUserInfo = Auth.auth().currentUser
                 let email = newUserInfo?.email
+                let UID = newUserInfo?.uid ?? ""
+                DatabaseManger.shared.saveUserToDatabse(user: UserInfo(userId: UID, userName: self.tfUserName.text!, userEmail: self.tfEmail.text!))
+                
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
