@@ -781,17 +781,27 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hF0-yg-Aog">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bi4-qe-xmH">
                                                 <rect key="frame" x="0.0" y="76.5" width="384" height="128"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hF0-yg-Aog">
+                                                        <rect key="frame" x="5" y="10" width="374" height="118"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="HOZ-t8-jzJ"/>
+                                                    <constraint firstItem="hF0-yg-Aog" firstAttribute="top" secondItem="Bi4-qe-xmH" secondAttribute="top" constant="10" id="Jly-Rz-hmV"/>
+                                                    <constraint firstAttribute="trailing" secondItem="hF0-yg-Aog" secondAttribute="trailing" constant="5" id="OfU-Pi-fmt"/>
+                                                    <constraint firstItem="hF0-yg-Aog" firstAttribute="leading" secondItem="Bi4-qe-xmH" secondAttribute="leading" constant="5" id="Qni-Ck-SME"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hF0-yg-Aog" secondAttribute="bottom" id="hsu-L4-Dqg"/>
+                                                    <constraint firstAttribute="height" constant="128" id="n22-xQ-nwK"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7b-wu-b16">
                                                 <rect key="frame" x="0.0" y="204.5" width="384" height="50"/>
                                                 <subviews>
@@ -972,22 +982,21 @@
                                         <constraints>
                                             <constraint firstItem="b7b-wu-b16" firstAttribute="leading" secondItem="78z-UB-R8e" secondAttribute="leading" id="3wh-A5-lfp"/>
                                             <constraint firstAttribute="bottom" secondItem="Gwy-6I-xRT" secondAttribute="bottom" id="41r-5Y-aSc"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bi4-qe-xmH" secondAttribute="trailing" id="Ggz-ho-Vdi"/>
                                             <constraint firstAttribute="trailing" secondItem="kzN-n5-UYm" secondAttribute="trailing" id="Gtt-bs-KPe"/>
                                             <constraint firstItem="Gwy-6I-xRT" firstAttribute="top" secondItem="QRm-at-ztL" secondAttribute="bottom" id="NKP-nH-qgx"/>
                                             <constraint firstItem="kzN-n5-UYm" firstAttribute="leading" secondItem="78z-UB-R8e" secondAttribute="leading" id="PVD-fi-pYA"/>
                                             <constraint firstAttribute="trailing" secondItem="b7b-wu-b16" secondAttribute="trailing" id="Rja-DZ-F2L"/>
-                                            <constraint firstItem="hF0-yg-Aog" firstAttribute="leading" secondItem="78z-UB-R8e" secondAttribute="leading" id="Wkf-oM-MxZ"/>
                                             <constraint firstAttribute="trailing" secondItem="Gwy-6I-xRT" secondAttribute="trailing" id="Yfq-sh-O7M"/>
+                                            <constraint firstItem="Bi4-qe-xmH" firstAttribute="leading" secondItem="78z-UB-R8e" secondAttribute="leading" id="Ym3-3Q-OAt"/>
+                                            <constraint firstItem="Bi4-qe-xmH" firstAttribute="top" secondItem="abB-xA-boz" secondAttribute="bottom" id="hsC-3a-On5"/>
                                             <constraint firstItem="9wF-oo-jsC" firstAttribute="top" secondItem="kzN-n5-UYm" secondAttribute="bottom" id="iBw-g4-EO9"/>
                                             <constraint firstAttribute="trailing" secondItem="9wF-oo-jsC" secondAttribute="trailing" id="j3b-VV-HJ4"/>
-                                            <constraint firstAttribute="trailing" secondItem="hF0-yg-Aog" secondAttribute="trailing" id="ngz-VH-Zd0"/>
                                             <constraint firstItem="9wF-oo-jsC" firstAttribute="leading" secondItem="78z-UB-R8e" secondAttribute="leading" id="rCp-9I-sOD"/>
                                             <constraint firstAttribute="trailing" secondItem="QRm-at-ztL" secondAttribute="trailing" id="rtG-66-eZt"/>
                                             <constraint firstItem="Gwy-6I-xRT" firstAttribute="leading" secondItem="78z-UB-R8e" secondAttribute="leading" id="txb-yA-sOX"/>
-                                            <constraint firstItem="b7b-wu-b16" firstAttribute="top" secondItem="hF0-yg-Aog" secondAttribute="bottom" id="uLm-HK-WW1"/>
                                             <constraint firstItem="QRm-at-ztL" firstAttribute="top" secondItem="9wF-oo-jsC" secondAttribute="bottom" id="xBm-8m-lrD"/>
                                             <constraint firstItem="QRm-at-ztL" firstAttribute="leading" secondItem="78z-UB-R8e" secondAttribute="leading" id="yYr-UM-Uce"/>
-                                            <constraint firstItem="hF0-yg-Aog" firstAttribute="top" secondItem="abB-xA-boz" secondAttribute="bottom" id="z8t-3S-nRi"/>
                                         </constraints>
                                     </stackView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWL-Vm-H42">
@@ -1047,6 +1056,7 @@
                     </view>
                     <connections>
                         <outlet property="answerText" destination="hF0-yg-Aog" id="Xf9-Ha-INv"/>
+                        <outlet property="answerTextView" destination="Bi4-qe-xmH" id="aDC-Px-t3Z"/>
                         <outlet property="btnNext" destination="zRA-XB-Iwo" id="ztg-Vq-9OP"/>
                         <outlet property="btnPrev" destination="uWL-Vm-H42" id="M4x-dW-JeO"/>
                         <outlet property="btnSubmit" destination="IXN-tk-Alc" id="at7-lj-Z2r"/>

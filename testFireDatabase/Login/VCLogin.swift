@@ -19,6 +19,7 @@ class VCLogin: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         btnLogin.layer.cornerRadius = 5
+        tfPassword.isSecureTextEntry = true
     }
     
     //MARK: IBAction
@@ -31,7 +32,7 @@ class VCLogin: UIViewController {
             self.alertwith(title: "Survey Plus", message: "Please enter valid email", options: ["Ok"], completion: {result in })
             return
         }
-        let vc = storyboard?.instantiateViewController(withIdentifier: "VCFormList") as! VCFormList
+        let vc = storyboard?.instantiateViewController(withIdentifier: "VCLandingPage") as! VCLandingPage
         Functions.showActivityIndicator(In: self)
         Auth.auth().signIn(withEmail: self.tfEmail.text!, password: self.tfPassword.text!) { (authResult, error) in
             Functions.hideActivityIndicator()

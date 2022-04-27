@@ -27,6 +27,7 @@ class VCDynamicContent: UIViewController {
     
     @IBOutlet weak var lblQuestionText:UILabel!
     @IBOutlet weak var answerText:UITextView!
+    @IBOutlet weak var answerTextView:UIView!
     @IBOutlet var viewList:[UIView]!
     @IBOutlet var lblOptionList:[UILabel]!
     @IBOutlet var checkList:[UIButton]!
@@ -34,6 +35,7 @@ class VCDynamicContent: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        answerText.text = ""
         cardView.layer.cornerRadius = 10
         lblQuestionText.text = "\(index)"
         answerText.delegate = self
@@ -55,7 +57,8 @@ class VCDynamicContent: UIViewController {
     
     //MARK: UI Configurations
     func resetAll(){
-        answerText.isHidden = true
+//        answerText.text = ""
+        answerTextView.isHidden = true
         resetButtons()
         for viewitem in viewList {
             viewitem.isHidden = true
@@ -64,9 +67,13 @@ class VCDynamicContent: UIViewController {
     func configUI(){
         switch question {
         case .textType:
-            answerText.isHidden = false
-            answerText.text = ""
-            answerText.becomeFirstResponder()
+            answerTextView.isHidden = false
+            answerText.layer.borderColor = UIColor.init(named: "AppDarkBlue")?.cgColor
+            answerText.layer.borderWidth = 0.3
+            answerText.layer.cornerRadius = 0.3
+            let property = selectedForm.value(forKey: "property") as! [NSDictionary]
+            self.answerText.text = property[index].value(forKey: "answer") as! String
+//            answerText.becomeFirstResponder()
         case .radioType, .checkType:
             for viewitem in viewList {
                 viewitem.isHidden = false
@@ -83,9 +90,7 @@ class VCDynamicContent: UIViewController {
     
     //MARK: Data Configuration
     func loadData(){
-        print((selectedForm.value(forKey: "property") as! [NSDictionary]).count)
-        print(index)
-        guard let questionData = selectedForm.value(forKey: "property") as? [NSDictionary] else  {return}
+         guard let questionData = selectedForm.value(forKey: "property") as? [NSDictionary] else  {return}
         self.lblQuestionText.text = questionData[index].value(forKey: "qTitle") as? String
         let type = questionData[index].value(forKey: "qType") as? String
         if  type == "textfield" {
@@ -109,10 +114,12 @@ class VCDynamicContent: UIViewController {
     
     func configOptionList(){
         let property = selectedForm.value(forKey: "property") as! [NSDictionary]
+        self.answerText.text = property[index].value(forKey: "answer") as! String
         if property[index].value(forKey: "option") != nil {
             let options = property[index].value(forKey: "option") as! [NSDictionary]
             for i in 0..<options.count {
                 lblOptionList[i].text = options[i].value(forKey: "optitle") as! String
+                print((options[i].value(forKey: "isSelected") as! String))
                 checkList[i].isSelected = (options[i].value(forKey: "isSelected") as! String) == "true" ? true : false
             }
         }
@@ -151,14 +158,54 @@ class VCDynamicContent: UIViewController {
             }
         }
         storeData(text:text)
+        updateRecord(ind:index,status:checkList[index].isSelected)
     }
     
     func onRadio(index:Int){
         resetButtons()
         checkList[index].isSelected =  true
         storeData(text: lblOptionList[index].text! )
+        updateRecord(ind:index)
     }
-    
+    func updateRecord(text:String){
+        if Functions.isUserTypeAdmin(){return}
+        guard var questionData = selectedForm.value(forKey: "property") as? [NSMutableDictionary] else  {return}
+        if questionData[index].value(forKey: "option") == nil {
+            questionData[index].setValue("\(text)", forKey: "answer")
+            selectedForm.setValue(questionData, forKey: "property")
+        }
+    }
+    func updateRecord(ind:Int,status:Bool){
+        if Functions.isUserTypeAdmin(){return}
+        guard var questionData = selectedForm.value(forKey: "property") as? [NSMutableDictionary] else  {return}
+        if questionData[index].value(forKey: "option") != nil {
+            var options = questionData[index].value(forKey: "option") as! [NSMutableDictionary]
+            let type = options[ind].value(forKey: "opdisplay") as! String
+            if type == "checkbox" {
+                options[ind].setValue("\(status)", forKey: "isSelected")
+                selectedForm.setValue(questionData, forKey: "property")
+            }
+            
+        }
+    }
+    func updateRecord(ind:Int){
+        if Functions.isUserTypeAdmin(){return}
+        guard var questionData = selectedForm.value(forKey: "property") as? [NSMutableDictionary] else  {return}
+        if questionData[index].value(forKey: "option") != nil {
+            var options = questionData[index].value(forKey: "option") as! [NSMutableDictionary]
+            let type = options[ind].value(forKey: "opdisplay") as! String
+            if type == "radio" {
+                for item in options{
+                    if item.value(forKey: "isSelected")as! String == "true" {
+                        item.setValue("false", forKey: "isSelected")
+                    }
+                }
+                options[ind].setValue("true", forKey: "isSelected")
+                selectedForm.setValue(questionData, forKey: "property")
+            }
+            
+        }
+    }
     func storeData(text:String){
         if Functions.isUserTypeAdmin() {return}
         let obj = Answers()
@@ -169,7 +216,7 @@ class VCDynamicContent: UIViewController {
             userReview.answers = [Answers]()
         }
         
-        var inx = userReview.answers?.firstIndex(where: { $0.questionID == obj.questionID})
+        let inx = userReview.answers?.firstIndex(where: { $0.questionID == obj.questionID})
         guard let objindex = inx else {
             userReview.answers?.append(obj)
             return}
@@ -183,6 +230,7 @@ extension VCDynamicContent: UITextViewDelegate{
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" { return }
         storeData(text: textView.text!)
+        updateRecord(text: textView.text!)
     }
 }
 

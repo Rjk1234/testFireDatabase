@@ -21,11 +21,12 @@ class VCSignUp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         btnSignUp.layer.cornerRadius = 5
+        tfPassword.isSecureTextEntry = true
     }
     
     //MARK: IBAction
     @IBAction func onTapSignUp(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "VCFormList") as! VCFormList
+        let vc = storyboard?.instantiateViewController(withIdentifier: "VCLandingPage") as! VCLandingPage
 
 //        self.navigationController?.pushViewController(vc, animated: true)
 //        return
