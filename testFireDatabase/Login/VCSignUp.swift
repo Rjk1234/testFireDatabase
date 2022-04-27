@@ -28,14 +28,12 @@ class VCSignUp: UIViewController {
     @IBAction func onTapSignUp(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "VCLandingPage") as! VCLandingPage
 
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        return
         if self.tfEmail.text == "" || self.tfPassword.text == "" || self.tfUserName.text == "" {
-            //show alert here
+            self.alertwith(title: "Survey Plus", message: "Please enter all information", options: ["Ok"], completion: {result in })
             return
         }
         if !self.tfEmail.text!.isValidEmail() {
-            //show alert
+            self.alertwith(title: "Survey Plus", message: "Please enter valid email", options: ["Ok"], completion: {result in })
             return
         }
         Functions.showActivityIndicator(In: self)
