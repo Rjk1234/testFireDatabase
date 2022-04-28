@@ -36,6 +36,9 @@
 		25B8C06E2812C13200502D11 /* VCAddForm+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B8C06D2812C13200502D11 /* VCAddForm+TableView.swift */; };
 		25B8C0702812D02100502D11 /* formTypeThree.json in Resources */ = {isa = PBXBuildFile; fileRef = 25B8C06F2812D02100502D11 /* formTypeThree.json */; };
 		25B8C0722812E28300502D11 /* DatabaseManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B8C0712812E28300502D11 /* DatabaseManger.swift */; };
+		25BE2E7D281AAE8300D41F8A /* RSPL_WildCard_Profile-2.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 25BE2E7A281AAE8200D41F8A /* RSPL_WildCard_Profile-2.mobileprovision */; };
+		25BE2E7E281AAE8300D41F8A /* Certificates_dev_rspl_rspl123#.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 25BE2E7B281AAE8200D41F8A /* Certificates_dev_rspl_rspl123#.p12 */; };
+		25BE2E7F281AAE8300D41F8A /* Certificates_dev_rspl_rspl123#[1].p12 in Resources */ = {isa = PBXBuildFile; fileRef = 25BE2E7C281AAE8200D41F8A /* Certificates_dev_rspl_rspl123#[1].p12 */; };
 		25FEE0F12818095B002BE261 /* formTypeCheckBox.json in Resources */ = {isa = PBXBuildFile; fileRef = 25FEE0F02818095B002BE261 /* formTypeCheckBox.json */; };
 		F140B138FEEEE72953089A4D /* Pods_testFireDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5BE1FB7EA9B934A56153CE /* Pods_testFireDatabase.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +75,9 @@
 		25B8C06D2812C13200502D11 /* VCAddForm+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VCAddForm+TableView.swift"; sourceTree = "<group>"; };
 		25B8C06F2812D02100502D11 /* formTypeThree.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = formTypeThree.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		25B8C0712812E28300502D11 /* DatabaseManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManger.swift; sourceTree = "<group>"; };
+		25BE2E7A281AAE8200D41F8A /* RSPL_WildCard_Profile-2.mobileprovision */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RSPL_WildCard_Profile-2.mobileprovision"; sourceTree = "<group>"; };
+		25BE2E7B281AAE8200D41F8A /* Certificates_dev_rspl_rspl123#.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Certificates_dev_rspl_rspl123#.p12"; sourceTree = "<group>"; };
+		25BE2E7C281AAE8200D41F8A /* Certificates_dev_rspl_rspl123#[1].p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Certificates_dev_rspl_rspl123#[1].p12"; sourceTree = "<group>"; };
 		25FEE0F02818095B002BE261 /* formTypeCheckBox.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = formTypeCheckBox.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		4F5BE1FB7EA9B934A56153CE /* Pods_testFireDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testFireDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA5396E5BAB1D2BAE6D5EF6 /* Pods-testFireDatabase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testFireDatabase.release.xcconfig"; path = "Target Support Files/Pods-testFireDatabase/Pods-testFireDatabase.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +151,9 @@
 				257CB3E0280E7F260042A970 /* LaunchScreen.storyboard */,
 				257CB3E3280E7F260042A970 /* Info.plist */,
 				25B59532281910F2000A9853 /* VCLandingPage.swift */,
+				25BE2E7B281AAE8200D41F8A /* Certificates_dev_rspl_rspl123#.p12 */,
+				25BE2E7C281AAE8200D41F8A /* Certificates_dev_rspl_rspl123#[1].p12 */,
+				25BE2E7A281AAE8200D41F8A /* RSPL_WildCard_Profile-2.mobileprovision */,
 			);
 			path = testFireDatabase;
 			sourceTree = "<group>";
@@ -298,10 +307,13 @@
 				25B8C0702812D02100502D11 /* formTypeThree.json in Resources */,
 				25FEE0F12818095B002BE261 /* formTypeCheckBox.json in Resources */,
 				257CB3E2280E7F260042A970 /* LaunchScreen.storyboard in Resources */,
+				25BE2E7E281AAE8300D41F8A /* Certificates_dev_rspl_rspl123#.p12 in Resources */,
 				25B8C06C2812B6D300502D11 /* cellTemplate.xib in Resources */,
 				2519ACBF280FEBB10076E308 /* GoogleService-Info.plist in Resources */,
 				259AA9B828115DFC00D3C357 /* formTypeRadio.json in Resources */,
 				25B8C06228126EEE00502D11 /* cellForm.xib in Resources */,
+				25BE2E7F281AAE8300D41F8A /* Certificates_dev_rspl_rspl123#[1].p12 in Resources */,
+				25BE2E7D281AAE8300D41F8A /* RSPL_WildCard_Profile-2.mobileprovision in Resources */,
 				257CB3DF280E7F260042A970 /* Assets.xcassets in Resources */,
 				257CB3DD280E7F240042A970 /* Main.storyboard in Resources */,
 			);
@@ -524,8 +536,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P69T5VTTR3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = testFireDatabase/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -538,8 +552,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Rishabh.testFireDatabase;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rspl.surveyplusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -552,8 +567,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P69T5VTTR3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = testFireDatabase/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -566,8 +583,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Rishabh.testFireDatabase;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rspl.surveyplusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
