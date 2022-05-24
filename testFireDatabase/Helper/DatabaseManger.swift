@@ -15,40 +15,117 @@ class DatabaseManger: NSObject {
     static let shared = DatabaseManger()
     
     var ref: DatabaseReference!
+    var database = Database.database().reference()
+    
+    func getFormWith(id:String, completion: @escaping (NSDictionary) -> Void ) {
+        formRef.queryOrdered(byChild: "formID").queryEqual(toValue: "\(id)" ).observeSingleEvent(of: .value, with: {(snapshot: DataSnapshot) in
+            print(snapshot.value as? [String: [String:Any]])
+            for child in snapshot.children {
+                    let childSnap = child as! DataSnapshot
+                    let dict = childSnap.value as! NSDictionary
+                completion(dict)
+                }
+        })
+    }
+    
+    func getAnswerListForForm(formId:String, completion: @escaping ([NSDictionary]) -> Void ) {
+        print(formId)
+        answerRef.queryOrdered(byChild: "formId").queryEqual(toValue: "\(formId)" ).observeSingleEvent(of: .value, with: {(snapshot: DataSnapshot) in
+//               print(snapshot.value as? [String: [String:Any]])
+            var list = [NSDictionary]()
+            var i = 1
+            print(snapshot.childrenCount)
+            for child in snapshot.children {
+                    let childSnap = child as! DataSnapshot
+                    let dict = childSnap.value as! NSDictionary
+                list.append(dict)
+                if i == snapshot.childrenCount {
+                    completion(list)
+                }
+                i += 1
+            }
+               })
+    }
+    
+    func getAnswerOfUser(id:String){
+        print(id)
+        answerRef.queryOrdered(byChild: "userid").queryEqual(toValue: "VOx1snqKN5UykvuYLBr3retZKw42").observeSingleEvent(of: .value, with: {(snapshot: DataSnapshot) in
+            print(snapshot.value as? [String: [String:Any]])
+        })
+        
+
+    }
+    
+    func getUserInfo(id:String, completion: @escaping (NSDictionary) -> Void ) {
+        userRef.queryOrdered(byChild: "userId").queryEqual(toValue: "\(id)").observeSingleEvent(of: .value, with: {(snapshot: DataSnapshot) in
+            print(snapshot.value as? [String: [String:Any]])
+            for child in snapshot.children {
+                    let childSnap = child as! DataSnapshot
+                    let dict = childSnap.value as! NSDictionary
+                 completion(dict)
+                }
+            })
+        
+    }
+    
+    
+    func checkIfEmailExists(email: String, completion: @escaping (Bool) -> Void ) {
+        database.child("Users").queryOrdered(byChild: "email").queryEqual(toValue: email).observeSingleEvent(of: .value, with: {(snapshot: DataSnapshot) in
+            if let result = snapshot.value as? [String:[String:Any]] {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        } )
+    }
+    
+    func removeform(id:String, completion: @escaping (Bool) -> Void){
+        ref = formRef
+        ref.child("\(id)").removeValue(){ error,val  in
+            if error != nil {
+                print("error \(error?.localizedDescription)")
+                completion(false)
+            }else{
+                completion(true)
+            }
+        }
+    }
     
     func saveUserToDatabse(user:UserInfo){
-        ref = Database.database().reference().child("Users")
+        ref = userRef //Database.database().reference().child("Users")
         let key = ref.childByAutoId().key
-       
+        
         let userObj : [String: Any] = ["userId":"\(user.userId!)",
                                        "userName":"\(user.userName!)",
                                        "userEmail":"\(user.userEmail!)"]
         ref.child(key!).setValue(userObj)
         Functions.saveUserInfo(user:UserInfo(userId: "\(user.userId!)", userName: "\(user.userName!)", userEmail: "\(user.userEmail!)"))
-        }
+    }
     
     func saveANswerToDatabse(user:UserInfo,formInfo:reviewRecord){
-        ref = Database.database().reference().child("Answers")
+        ref = answerRef //Database.database().reference().child("Answers")
         let key = ref.childByAutoId().key
         
         let ansObj : [String: Any] = ["userid": user.userId!,
                                       "userName": user.userName!,
-                                      "formId": formInfo.formId!,
-                                      ]
+                                      "formId": formInfo.formId!
+        ]
         ref.child(key!).setValue(ansObj)
         var answerList = [[String: Any]]()
         for i in 0..<formInfo.answers!.count{
             let obj : [String: Any] = ["questionID":"\(formInfo.answers![i].questionID!)",
-                                       "answerText":"\(formInfo.answers![i].answerText!)"]
+                                       "answerText":"\(formInfo.answers![i].answerText!)",
+                                       "answerOpId": "\(formInfo.answers![i].optionId ?? "NA")"]
             answerList.append(obj)
         }
         print(answerList)
         ref.child(key!).child("answers").setValue(answerList)
-        }
-
+    }
+    
     func saveFormToDataBase(List:FormData){
-        ref = Database.database().reference().child("Forms")
+        ref = formRef //Database.database().reference().child("Forms")
         let key = ref.childByAutoId().key
+        print(key)
         let form: [String:Any] = ["formID": "\(key!)", //List.formID!
                                   "title": "\(List.title!)",
                                   "status": "\(List.status!)",
@@ -81,26 +158,4 @@ class DatabaseManger: NSObject {
         }
     }
 }
-    
-//    func fetchFromDatabse(){
-//        ref = Database.database().reference().child("Forms")
-//        var list = [NSMutableDictionary]()
-//        ref.observe(DataEventType.value, with: { (snapshot) in
-//            if snapshot.childrenCount > 0 {
-//                for obj in snapshot.children.allObjects as! [DataSnapshot] {
-//                    let root = obj.value as? [String: Any]
-//                    let dictObj = NSMutableDictionary()
-//                    let val = root!["formID"] as! String
-//                    dictObj.setValue(val, forKey: "formID")
-//                    dictObj.setValue(root!["property"], forKey: "property")
-//                    dictObj.setValue(root!["title"], forKey: "title")
-//                    dictObj.setValue(root!["status"], forKey: "status")
-//                    list.append(dictObj)
-//                }
-//                print(list.count)
-//
-//            }
-//        })
-//    }
-
 

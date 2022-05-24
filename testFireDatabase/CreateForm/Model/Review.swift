@@ -8,15 +8,17 @@
 import UIKit
 
 class reviewRecord {
-    var formId:String?
+    var formId: String?
     var answers : [Answers]?
 }
+
 class Answers {
     var questionID: String?
     var answerText: String?
+    var optionId:String?
 }
 
-class UserInfo:Codable{
+class UserInfo: Codable {
     var userName: String?
     var userId: String?
     var userEmail: String?

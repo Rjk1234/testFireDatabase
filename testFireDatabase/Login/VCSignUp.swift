@@ -58,16 +58,26 @@ class VCSignUp: UIViewController {
                 }
                 self.alertwith(title: "Survey Plus", message: "\(error.localizedDescription)", options: ["Ok"], completion: {result in })
             } else {
-                print("User signs up successfully")
-                let newUserInfo = Auth.auth().currentUser
-                let email = newUserInfo?.email
-                let UID = newUserInfo?.uid ?? ""
-                DatabaseManger.shared.saveUserToDatabse(user: UserInfo(userId: UID, userName: self.tfUserName.text!, userEmail: self.tfEmail.text!))
-                
-                self.navigationController?.pushViewController(vc, animated: true)
+                   authResult?.user.sendEmailVerification(){error in
+                       if error ==  nil {
+                           print("verification mail sent!")
+                           let newUserInfo = Auth.auth().currentUser
+                           let email = newUserInfo?.email
+                           let UID = newUserInfo?.uid ?? ""
+                           let user = UserInfo(userId: UID, userName: self.tfUserName.text!, userEmail: self.tfEmail.text!)
+                           DatabaseManger.shared.saveUserToDatabse(user: user)
+                           // go to verification screen!
+                           let vc = self.storyboard?.instantiateViewController(withIdentifier: "VCVerification") as! VCVerification
+                           vc.userInfoOnject = user
+                           self.navigationController?.pushViewController(vc, animated: true)
+                       } else {
+                           print("retry sending verification mail")
+                       }
+                   }
             }
         }
     }
+    
     @IBAction func onTapLogin(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "VCLogin") as! VCLogin
         self.navigationController?.pushViewController(vc, animated: true)

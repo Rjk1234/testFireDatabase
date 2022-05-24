@@ -62,6 +62,17 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbW-Ux-rZz">
+                                <rect key="frame" x="380" y="5" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MbW-Ux-rZz" secondAttribute="height" multiplier="1:1" id="XVZ-8Z-kbH"/>
+                                    <constraint firstAttribute="height" constant="35" id="jgd-h7-0dS"/>
+                                </constraints>
+                                <color key="tintColor" name="AppSky"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="xmark" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -73,9 +84,11 @@
                             <constraint firstItem="Rnk-sW-owT" firstAttribute="leading" secondItem="kG8-Ya-kNq" secondAttribute="leading" id="FCa-zF-weO"/>
                             <constraint firstItem="Rnk-sW-owT" firstAttribute="top" secondItem="kG8-Ya-kNq" secondAttribute="top" id="IwR-su-e93"/>
                             <constraint firstAttribute="trailing" secondItem="mSz-Fk-VQi" secondAttribute="trailing" constant="10" id="Mfp-5n-Dhy"/>
+                            <constraint firstAttribute="trailing" secondItem="MbW-Ux-rZz" secondAttribute="trailing" constant="10" id="Qhx-BG-Q5m"/>
                             <constraint firstAttribute="bottom" secondItem="ZxH-N4-Wvl" secondAttribute="bottom" constant="15" id="TSb-pi-AaB"/>
                             <constraint firstItem="ZxH-N4-Wvl" firstAttribute="leading" secondItem="sik-yf-PR3" secondAttribute="trailing" constant="10" id="Xjj-KA-NdL"/>
                             <constraint firstItem="mSz-Fk-VQi" firstAttribute="leading" secondItem="Rnk-sW-owT" secondAttribute="trailing" constant="10" id="Z3w-6G-NpO"/>
+                            <constraint firstItem="MbW-Ux-rZz" firstAttribute="top" secondItem="kG8-Ya-kNq" secondAttribute="top" constant="5" id="esw-C5-N1n"/>
                             <constraint firstItem="ZxH-N4-Wvl" firstAttribute="top" secondItem="Tdb-AJ-KGy" secondAttribute="bottom" constant="10" id="mNW-P9-EIp"/>
                             <constraint firstItem="Tdb-AJ-KGy" firstAttribute="top" secondItem="mSz-Fk-VQi" secondAttribute="bottom" constant="5" id="qGE-PA-U1s"/>
                             <constraint firstItem="sik-yf-PR3" firstAttribute="centerY" secondItem="ZxH-N4-Wvl" secondAttribute="centerY" id="uvK-L4-lct"/>
@@ -93,6 +106,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="btnOpen" destination="ZxH-N4-Wvl" id="6fR-ry-xN8"/>
+                <outlet property="btnRemove" destination="MbW-Ux-rZz" id="Baq-Rz-oVN"/>
                 <outlet property="cardView" destination="kG8-Ya-kNq" id="VDb-kl-hHk"/>
                 <outlet property="lblHeaderInfo" destination="mSz-Fk-VQi" id="4vR-NJ-MuD"/>
                 <outlet property="lblTimeStamp" destination="sik-yf-PR3" id="Gef-c0-OxA"/>
@@ -103,6 +117,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AppDarkBlue">
             <color red="0.16300000250339508" green="0.22900000214576721" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

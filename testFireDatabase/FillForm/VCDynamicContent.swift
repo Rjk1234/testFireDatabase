@@ -35,7 +35,6 @@ class VCDynamicContent: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        answerText.text = ""
         cardView.layer.cornerRadius = 10
         lblQuestionText.text = "\(index)"
         answerText.delegate = self
@@ -43,8 +42,8 @@ class VCDynamicContent: UIViewController {
         if selectedForm != nil {
             loadData()
         }
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         btnSubmit.isHidden = true
@@ -57,13 +56,13 @@ class VCDynamicContent: UIViewController {
     
     //MARK: UI Configurations
     func resetAll(){
-//        answerText.text = ""
         answerTextView.isHidden = true
         resetButtons()
         for viewitem in viewList {
             viewitem.isHidden = true
         }
     }
+    
     func configUI(){
         switch question {
         case .textType:
@@ -73,7 +72,6 @@ class VCDynamicContent: UIViewController {
             answerText.layer.cornerRadius = 0.3
             let property = selectedForm.value(forKey: "property") as! [NSDictionary]
             self.answerText.text = property[index].value(forKey: "answer") as! String
-//            answerText.becomeFirstResponder()
         case .radioType, .checkType:
             for viewitem in viewList {
                 viewitem.isHidden = false
@@ -157,14 +155,14 @@ class VCDynamicContent: UIViewController {
                 text += "\(lblOptionList[i].text!)"
             }
         }
-        storeData(text:text)
+        storeData(text:text, indexOp: index)
         updateRecord(ind:index,status:checkList[index].isSelected)
     }
     
     func onRadio(index:Int){
         resetButtons()
         checkList[index].isSelected =  true
-        storeData(text: lblOptionList[index].text! )
+        storeData(text: lblOptionList[index].text!, indexOp:index)
         updateRecord(ind:index)
     }
     func updateRecord(text:String){
@@ -206,12 +204,18 @@ class VCDynamicContent: UIViewController {
             
         }
     }
-    func storeData(text:String){
+    func storeData(text:String, indexOp: Int?){
         if Functions.isUserTypeAdmin() {return}
         let obj = Answers()
         guard let questionData = selectedForm.value(forKey: "property") as? [NSDictionary] else  {return}
         obj.questionID = questionData[index].value(forKey: "questionID") as? String
         obj.answerText = text
+        if ((questionData[index].value(forKey: "qType") as! String) != "textfield") && (indexOp != nil){
+            obj.optionId = "\(indexOp!)"
+        }
+        
+        
+        
         if userReview.answers == nil {
             userReview.answers = [Answers]()
         }
@@ -222,14 +226,13 @@ class VCDynamicContent: UIViewController {
             return}
         userReview.answers?.remove(at: objindex)
         userReview.answers?.insert(obj, at: objindex)
-        
     }
 }
 
 extension VCDynamicContent: UITextViewDelegate{
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" { return }
-        storeData(text: textView.text!)
+        storeData(text: textView.text!, indexOp: nil)
         updateRecord(text: textView.text!)
     }
 }

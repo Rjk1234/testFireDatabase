@@ -18,9 +18,18 @@ extension VCFormList: UITableViewDelegate, UITableViewDataSource {
         cell.lblTitle.text = self.list[indexPath.row].value(forKey: "title") as! String
         cell.btnOpen.tag = indexPath.row
         cell.btnOpen.addTarget(self, action: #selector(openSurvey), for: .touchUpInside)
+        cell.btnRemove.tag = indexPath.row
+        cell.btnRemove.addTarget(self, action: #selector(onTapRemove), for: .touchUpInside)
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !Functions.isUserTypeAdmin() {return}
+        let id = self.list[indexPath.row].value(forKey: "formID") as! String
+       print(self.list[indexPath.row])
+        let vc = storyboard?.instantiateViewController(withIdentifier: "VCReview") as! VCReview
+        vc.selectedFormId = id
+          navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc func openSurvey(_ sender: UIButton){
         print(sender.tag)
@@ -28,6 +37,22 @@ extension VCFormList: UITableViewDelegate, UITableViewDataSource {
         selectedForm = obj
         let vc = storyboard?.instantiateViewController(withIdentifier: "VCFillForm") as! VCFillForm
           navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func onTapRemove(_ sender: UIButton){
+        self.alertwith(title: "Survey Plus", message: "Delete this Form?", options: ["OK","Cancel"], completion: {success in
+            if success == 0 {
+                let obj = self.list[sender.tag]
+               if let formId = obj.value(forKey: "formID") as? String{
+                   DatabaseManger.shared.removeform(id:formId){success in
+                       if success {
+                           self.list.remove(at: sender.tag)
+                           self.tblList.reloadData()
+                       }
+                   }
+                }
+            }
+        })
     }
     
 }

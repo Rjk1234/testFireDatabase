@@ -30,14 +30,16 @@ class Functions: NSObject {
         }
         return false
     }
+    
     class func isUserTypeAdmin()->Bool{
         if let info = UserDefaults.standard.value(forKey: "UserId") as? String{
-            if info == "TpHX1qEpNuUVqaQ0N5ODripeYf92"{
+            if info == "rEQyaRvZLZOVW7ToRSwKtr4ifVC2"{
                 return true
             }
         }
         return false
     }
+    
     class func saveUserInfo(user:UserInfo){
         UserDefaults.standard.set(user.userName, forKey: "Name")
         UserDefaults.standard.set(user.userEmail, forKey: "Email")

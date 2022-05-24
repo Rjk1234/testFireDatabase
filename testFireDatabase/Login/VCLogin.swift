@@ -18,6 +18,7 @@ class VCLogin: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        DatabaseManger.shared.removeform()
         btnLogin.layer.cornerRadius = 5
         tfPassword.isSecureTextEntry = true
     }
@@ -32,7 +33,9 @@ class VCLogin: UIViewController {
             self.alertwith(title: "Survey Plus", message: "Please enter valid email", options: ["Ok"], completion: {result in })
             return
         }
-        let vc = storyboard?.instantiateViewController(withIdentifier: "VCLandingPage") as! VCLandingPage
+//        DatabaseManger.shared.checkIfEmailExists(email: self.tfEmail.text!, completion: {result in
+//            print(result)
+//        })
         Functions.showActivityIndicator(In: self)
         Auth.auth().signIn(withEmail: self.tfEmail.text!, password: self.tfPassword.text!) { (authResult, error) in
             Functions.hideActivityIndicator()
@@ -56,15 +59,36 @@ class VCLogin: UIViewController {
                 self.alertwith(title: "Survey Plus", message: "\(error.localizedDescription)", options: ["Ok"], completion: {result in })
             } else {
                 print("User signs in successfully")
-                let userInfo = Auth.auth().currentUser
-                let email = userInfo?.email
-                let UID = userInfo?.uid ?? ""
-                self.navigationController?.pushViewController(vc, animated: true)
-                Functions.saveUserInfo(user:UserInfo(userId: "\(UID)", userName: "", userEmail: "\(userInfo?.email ?? "")"))
-              }
-            
+                let newUserInfo = Auth.auth().currentUser
+                let email = newUserInfo?.email
+                let UID = newUserInfo?.uid ?? ""
+               
+                DatabaseManger.shared.getUserInfo(id: "\(UID)"){result in
+                    let name  = result.value(forKey: "userName") as! String
+                    let user = UserInfo(userId: "\(UID)", userName: "\(name)", userEmail: "\(email ?? "")")
+                if authResult!.user.isEmailVerified {
+                    print("email is verified!!")
+                
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "VCLandingPage") as! VCLandingPage
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    Functions.saveUserInfo(user: user)
+                } else {
+                    authResult?.user.sendEmailVerification(){error in
+                        if error ==  nil {
+                            print("verification mail sent!")
+                            // go to verification screen!
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "VCVerification") as! VCVerification
+                            vc.userInfoOnject = user
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            print("retry sending verification mail")
+                        }
+                    }
+                } }
+            }
         }
     }
+    
     @IBAction func onTapSignUp(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "VCSignUp") as! VCSignUp
         self.navigationController?.pushViewController(vc, animated: true)

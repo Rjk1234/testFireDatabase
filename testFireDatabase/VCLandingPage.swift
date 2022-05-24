@@ -6,23 +6,27 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class VCLandingPage: UIViewController {
 
     @IBOutlet var viewList:[UIView]!
     @IBOutlet var btnList:[UIButton]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        configUI()
+//        if Auth.auth().currentUser!.isEmailVerified{
+//            print("yo")
+//        }
+//        let id = UserDefaults.standard.string(forKey: "UserId") ?? ""
+//        DatabaseManger.shared.getAnswerOfUser(id:id)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-    
-        
-        configUI()
+       configUI()
     }
+    
     func configUI(){
         for views in viewList {
             views.isHidden = true

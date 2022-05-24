@@ -87,7 +87,6 @@ class CustomPageController: UIPageViewController, UIPageViewControllerDataSource
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if finished {
             guard let journalVC = viewControllers?.first as? VCDynamicContent else { return }
-            
             let index = journalVC.index
             self.page = index
             curind = index
@@ -104,6 +103,7 @@ class CustomPageController: UIPageViewController, UIPageViewControllerDataSource
         self.page = index
         curind = index
     }
+    
     @objc func onTapback(){
         if curind == 0 {
             return
